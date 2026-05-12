@@ -1,0 +1,22 @@
+:root {
+  --bg: #ffffff;
+  --text: #222222;
+  --muted: #6b6b6b;
+  --card: #f7f7fb;
+}
+
+[data-theme="escuro"] {
+  --bg: #0f1115;
+  --text: #e6e6e9;
+  --muted: #9aa0a6;
+  --card: #16161a;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+[data-theme="escuro"] .cabecalho h1 {
+  color: #fff;
+}

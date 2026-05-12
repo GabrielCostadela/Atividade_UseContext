@@ -1,0 +1,17 @@
+.cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background: transparent;
+}
+.acoes-cabecalho {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.cabecalho h1 {
+  color: #000;
+}

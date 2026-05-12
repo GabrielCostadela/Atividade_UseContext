@@ -1,0 +1,16 @@
+.conteudo {
+  padding: 28px 12px;
+  text-align: left;
+}
+.cartoes {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+.cartao {
+  background: var(--card);
+  padding: 16px;
+  border-radius: 8px;
+  flex: 1;
+  color: var(--text);
+}

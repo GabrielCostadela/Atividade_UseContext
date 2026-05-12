@@ -1,0 +1,12 @@
+.alternador-tema {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--card);
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.alternador-tema:hover {
+  opacity: 0.95;
+}
