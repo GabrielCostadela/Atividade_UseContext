@@ -28,9 +28,7 @@ export function ProvedorTema({ children }) {
 }
 
 export function usarTema() {
-  const ctx = useContext(ContextoTema);
-  if (!ctx) throw new Error("usarTema deve ser usado dentro de ProvedorTema");
-  return ctx;
+  return useContext(ContextoTema);
 }
 
 export default ContextoTema;

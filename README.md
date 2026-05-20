@@ -1,16 +1,82 @@
-# React + Vite
+# Atividade UseContext — Alternador de Tema
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto de exemplo que demonstra o uso do Context API do React para alternar entre temas `claro` e `escuro`.
 
-Currently, two official plugins are available:
+## Descrição
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+O projeto fornece um provedor de tema (`ProvedorTema`) que armazena o estado do tema em `localStorage`, aplica o tema ao elemento `document.documentElement` via atributo `data-theme` e disponibiliza a função `alternar` para alternar entre `claro` e `escuro`.
 
-## React Compiler
+## Requisitos
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js 16+ (ou versão compatível com Vite)
+- npm ou yarn
 
-## Expanding the ESLint configuration
+## Instalação
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Instale as dependências:
+
+```bash
+npm install
+# ou
+# yarn
+```
+
+## Executar em desenvolvimento
+
+```bash
+npm run dev
+```
+
+## Build e preview
+
+```bash
+npm run build
+npm run preview
+```
+
+## Estrutura relevante
+
+- [src/main.jsx](src/main.jsx#L1-L20): inicia a aplicação e envolve o `App` com o `ProvedorTema`.
+- [src/context/ContextoTema.jsx](src/context/ContextoTema.jsx#L1-L80): exporta `ProvedorTema` e o hook `usarTema()`.
+- [src/components/AlternadorTema.jsx](src/components/AlternadorTema.jsx#L1-L40): botão pronto que chama `alternar()` para mudar o tema.
+- [src/styles/tema.css](src/styles/tema.css#L1-L40): variáveis CSS e regras para `[data-theme="escuro"]`.
+- [src/App.jsx](src/App.jsx#L1-L200): componente principal da aplicação.
+
+## Como usar o contexto de tema
+
+O provedor já é aplicado em [src/main.jsx](src/main.jsx#L1-L20). Para consumir o tema em qualquer componente, importe o hook `usarTema`:
+
+```jsx
+import { usarTema } from "./context/ContextoTema";
+
+function MeuComponente() {
+  const { tema, alternar } = usarTema();
+
+  return (
+    <div>
+      <p>Tema atual: {tema}</p>
+      <button onClick={alternar}>Alternar tema</button>
+    </div>
+  );
+}
+```
+
+O componente `AlternadorTema` já implementa esse padrão e exibe um rótulo (`🌞 Claro` ou `🌙 Escuro`) conforme o tema atual.
+
+## Como o tema é aplicado
+
+- O estado `tema` é salvo em `localStorage` com a chave `tema`.
+- Sempre que o tema muda, o atributo `data-theme` do `document.documentElement` é atualizado — o CSS em [src/styles/tema.css](src/styles/tema.css#L1-L40) usa esse atributo para trocar variáveis de cor.
+
+## Personalização
+
+- Para alterar cores, edite as variáveis em [src/styles/tema.css](src/styles/tema.css#L1-L40).
+- Para adicionar mais temas, adapte o `ProvedorTema` para suportar mais valores e atualize o CSS para responder a `[data-theme="<seu-tema>"]`.
+
+## Contribuições
+
+Sinta-se à vontade para abrir issues ou pull requests com melhorias.
+
+---
+
+Arquivo principal do contexto: [src/context/ContextoTema.jsx](src/context/ContextoTema.jsx#L1-L80)
